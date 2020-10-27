@@ -9,14 +9,14 @@ stored in your local project space.
 For example, you can get all computed molecular formula candidates, fragmentation trees, structures and 
 predicted fingerprints computed with SIRIUS.
 
-#### Installing Rsirius directly from Github
+### Installing Rsirius directly from Github
 To install Rsirius directly from Github you need the package `remotes` and its method `install_github`. 
 The following code will install Rsirius from this Github repository:
 
     require(remotes)
     install_github(repo = "boecker-lab/sirius-apis", subdir = "Rsirius", ref = "master", build = TRUE)
 
-#### Start SIRIUS' REST service using Rsirius
+### Start SIRIUS' REST service using Rsirius
 For using Rsirius you have to create an `SiriusApi` client object first. 
 An object of this class `SiriusApi` handles the client-server communication and 
 is necessary for starting the SIRIUS REST service as background service.
@@ -29,14 +29,14 @@ There is also a method to shut down the REST service:
 
     api_client$shutdown()
     
-#### Example
+### Example
 
     comp_controller <- CompoundControllerApi$new(api_client)
     resp <- comp_controller$get_compound_ids_using_get(pid = "mySiriusProjectSpace")
     compound_ids <- resp$content
     
     mf_controller <- FormulaResultController$new(api_client)
-    resp <- mf_controller$get_formula_ids_using_get(compoundId,formulaId,includeFormulaScores = TRUE)
+    resp <- mf_controller$get_formula_ids_using_get(compoundId,projectSpaceId,includeFormulaScores = TRUE)
     formula_ids <- resp$content
   
   
